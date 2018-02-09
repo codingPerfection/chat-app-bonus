@@ -11,8 +11,8 @@ app.use(express.static(buildPath))
 
 io.on("connection", (socket) => {
 
-    socket.on("newMessage", (data, think) => {
-        socket.broadcast.emit("newMessage", data, think);
+    socket.on("newMessage", (data, think,highlight) => {
+        socket.broadcast.emit("newMessage", data, think,highlight);
     })
 
     socket.on("nickname", (data) => {

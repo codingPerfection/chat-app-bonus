@@ -20,8 +20,8 @@ class MsgStore {
 
         this.socket = openSocket('http://localhost:80');
 
-        this.socket.on("newMessage", (data, think) => {
-            this.messages.push(new Msg({ type: "other", data: data, think: think }));
+        this.socket.on("newMessage", (data, think, highlight) => {
+            this.messages.push(new Msg({ type: "other", data: data, think: think, highlight: highlight }));
         });
 
         this.socket.on("nickname", (data) => {
@@ -71,6 +71,8 @@ class MsgStore {
             } catch (e) {
                 console.error("there is no last message");
             }
+        } else if (command.indexOf('/highlight') === 0) {
+            this.sendMessage(stripCommand("/highlight"), false, true);
         } else {
             this.sendMessage(command)
         }
@@ -80,9 +82,9 @@ class MsgStore {
         this.socket.emit("typing")
     }
 
-    sendMessage(txt, think = false) {
-        this.messages.push(new Msg({ type: "me", data: txt, think: think }));
-        this.socket.emit("newMessage", txt, think)
+    sendMessage(txt, think = false, highlight = false) {
+        this.messages.push(new Msg({ type: "me", data: txt, think: think, highlight: highlight }));
+        this.socket.emit("newMessage", txt, think, highlight)
     }
 }
 

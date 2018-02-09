@@ -30,7 +30,7 @@ class Message extends Component {
                     transitionLeave={false}
                 >
                     <div className={this.addClass()}>
-                        <MessageData>
+                        <MessageData highlight={this.props.highlight}>
                             {this.props.data}
                         </MessageData>
                     </div>

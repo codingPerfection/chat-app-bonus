@@ -17,3 +17,16 @@
     height: 52px;
     background-position: -65px -5px;
 }
+
+.MessageData .highlight{
+    font-size:110%;
+}
+
+.MessageData .highlight .background{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right:0px;
+    bottom: 0px;
+    background-color: rgba(0,0,0,0.1);
+}
