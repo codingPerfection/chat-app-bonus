@@ -12,7 +12,7 @@ All the stuff is on front.
 ## Front
 Front uses react with mobx, communication is done using socket from Store.js and is packed with webpack.
 
-Zipped app is about 80kb.
+Zipped app is about 90kb.
 
 Thanks for giving me opportunity to do this and I am looking forward to your review.
 

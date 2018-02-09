@@ -7,7 +7,7 @@ var io = require('socket.io')(server);
 
 let buildPath = __dirname + "/../front/build/";
 app.use(expressStaticGzip(buildPath));
-app.use(express.static(buildPath))
+app.use(express.static(buildPath));
 
 io.on("connection", (socket) => {
 
