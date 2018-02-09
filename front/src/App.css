@@ -42,3 +42,9 @@ body , html {
   box-sizing: border-box;
 }
 
+.App > .NotificationBox{
+  flex-shrink: 0;
+  background-color: #F1F1F1;
+  padding: 4px;
+}
+

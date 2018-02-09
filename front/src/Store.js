@@ -28,7 +28,7 @@ class MsgStore {
             return command.replace(strip, "").trim();
         }
 
-        if (command.indexOf('/nickname') == 0) {
+        if (command.indexOf('/nickname') === 0) {
             this.socket.emit("nickname", stripCommand("/nickname"))
         } else {
             this.socket.emit("newMessage", command)
