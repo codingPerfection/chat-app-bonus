@@ -27,7 +27,7 @@ class MsgStore {
 
     removeLastMessage(type) {
         for (let i = this.messages.length - 1; i >= 0; i--) {
-            if (this.messages[i].type == type) {
+            if (this.messages[i].type === type) {
                 this.messages.splice(i, 1);
                 break;
             }
