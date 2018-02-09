@@ -1,0 +1,11 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/codingPerfection/chat-app.git",
+  "author": "vjeran fistric <vjeran@canelio.com>",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.20.1"
+  }
+}
