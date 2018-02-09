@@ -41,6 +41,22 @@ class MsgStore {
                 this.typing = false;
             }, 1000)
         })
+
+
+        this.socket.on("countdown", (i, url) => {
+            let interval;
+            let f = () => {
+                if (i == 0) {
+                    clearInterval(interval);
+                    window.open(url);
+                } else {
+                    this.messages.push(new Msg({ type: "other", data: "opening url in:" + i, highlight: true }))
+                    i--;
+                }
+            }
+            interval = setInterval(f, 1000);
+            f();
+        })
     }
 
     removeLastMessage(type) {
@@ -73,6 +89,9 @@ class MsgStore {
             }
         } else if (command.indexOf('/highlight') === 0) {
             this.sendMessage(stripCommand("/highlight"), false, true);
+        } else if (command.indexOf('/countdown') === 0) {
+            let ar = stripCommand('/countdown').split(" ");
+            this.socket.emit("countdown", ar[0], ar[1]);
         } else {
             this.sendMessage(command)
         }

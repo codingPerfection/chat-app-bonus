@@ -11,8 +11,8 @@ app.use(express.static(buildPath))
 
 io.on("connection", (socket) => {
 
-    socket.on("newMessage", (data, think,highlight) => {
-        socket.broadcast.emit("newMessage", data, think,highlight);
+    socket.on("newMessage", (data, think, highlight) => {
+        socket.broadcast.emit("newMessage", data, think, highlight);
     })
 
     socket.on("nickname", (data) => {
@@ -20,13 +20,16 @@ io.on("connection", (socket) => {
     })
 
     socket.on("oops", () => {
-        socket.broadcast.emit("oops" );
+        socket.broadcast.emit("oops");
     })
 
     socket.on("typing", () => {
         socket.broadcast.emit("typing");
     })
 
+    socket.on("countdown", (number, url) => {
+        socket.broadcast.emit("countdown", number, url);
+    })
 
 })
 
