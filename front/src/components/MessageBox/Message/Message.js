@@ -9,7 +9,8 @@ class Message extends Component {
     }
 
     addClass() {
-        return "Message " + this.props.type;
+        let think = this.props.think ? " think " : " ";
+        return "Message " + this.props.type + think;
     }
 
 
