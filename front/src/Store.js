@@ -12,6 +12,7 @@ class MsgStore {
         this.socket = openSocket('http://localhost:80');
 
         this.socket.on("newMessage", (data) => {
+            console.log("got message:",data)
             this.messages.push({ type: "other", data: data });
         })
     }

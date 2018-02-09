@@ -7,12 +7,13 @@ class InputBox extends Component {
 
     constructor(props) {
         super(props);
-        this.onKeyPress = this.onKeyPress.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
     onKeyDown(e) {
         //on enter send command
         if (e.keyCode === 13) {
+            e.preventDefault();
             //call store and send command
             MsgStore.sendMessage(this.elem.value);
             this.elem.value = "";
