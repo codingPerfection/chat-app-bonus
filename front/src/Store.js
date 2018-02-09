@@ -1,6 +1,5 @@
 import { extendObservable } from 'mobx';
 import openSocket from 'socket.io-client';
-import { setTimeout, clearTimeout } from 'timers';
 
 
 class MsgStore {
@@ -25,6 +24,6 @@ class MsgStore {
 
 
 
-const MsgStore = new MsgStore();
+const store = new MsgStore();
 
-export default MsgStore;
+export default store;

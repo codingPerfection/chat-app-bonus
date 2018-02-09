@@ -6,7 +6,10 @@ var io = require('socket.io')(server);
 io.on("connection", (socket) => {
 
     socket.on("newMessage", (data) => {
+        console.log(data);
         socket.broadcast.emit("newMessage", data);
     })
 
 })
+
+server.listen(80);

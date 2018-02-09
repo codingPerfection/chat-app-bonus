@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './InputBox.css';
+import MsgStore from './../../Store'
+
 
 class InputBox extends Component {
 
@@ -8,10 +10,12 @@ class InputBox extends Component {
         this.onKeyPress = this.onKeyPress.bind(this);
     }
 
-    onKeyDown() {
-        //on enter send message
-        if (e.keyCode == 13) {
+    onKeyDown(e) {
+        //on enter send command
+        if (e.keyCode === 13) {
             //call store and send command
+            MsgStore.sendMessage(this.elem.value);
+            this.elem.value = "";
         }
     }
 
@@ -20,8 +24,8 @@ class InputBox extends Component {
             <div className="InputBox">
                 <textarea ref={(ref) => { this.elem = ref }}
                     onKeyDown={this.onKeyDown}
+                    placeholder="Type in new message... (enter sends it)"
                 >
-
                 </textarea>
             </div >
         );
