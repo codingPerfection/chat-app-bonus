@@ -5,6 +5,11 @@ class Message extends Component {
 
     constructor(props) {
         super(props);
+        this.addClass = this.addClass.bind(this);
+    }
+
+    addClass() {
+        return "Message " + this.props.type;
     }
 
 
@@ -12,9 +17,10 @@ class Message extends Component {
     render() {
         return (
             <div className="MessageContainer">
-                <div className="Message">
+                <div className={this.addClass()}>
                     {this.props.data}
                 </div>
+                <div className="clearFix"></div>
             </div>
         );
     }

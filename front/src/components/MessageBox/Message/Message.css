@@ -1,0 +1,19 @@
+.MessageContainer{
+    padding: 5px 0px;
+}
+
+.Message{
+    padding:4px 8px;
+    max-width: 60%;
+    border-radius: 5px;
+}
+
+.Message.me{
+    background-color:#0f0;
+    float:right;
+}
+
+.Message.other{
+    background-color:#ccc;
+    float:left;
+}
