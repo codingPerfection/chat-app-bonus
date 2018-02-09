@@ -1,7 +1,14 @@
 import { extendObservable } from 'mobx';
 import openSocket from 'socket.io-client';
 
-
+class Msg {
+    constructor(props) {
+        extendObservable(this, {
+            fade: false,
+        });
+        Object.assign(this, props);
+    }
+}
 class MsgStore {
 
     constructor() {
@@ -14,7 +21,7 @@ class MsgStore {
         this.socket = openSocket('http://localhost:80');
 
         this.socket.on("newMessage", (data, think) => {
-            this.messages.push({ type: "other", data: data, think: think });
+            this.messages.push(new Msg({ type: "other", data: data, think: think }));
         });
 
         this.socket.on("nickname", (data) => {
@@ -58,6 +65,12 @@ class MsgStore {
             this.socket.emit("oops")
         } else if (command.indexOf('/think') === 0) {
             this.sendMessage(stripCommand("/think"), true);
+        } else if (command.indexOf('/fadelast') === 0) {
+            try {
+                this.messages[this.messages.length - 1].fade = true;
+            } catch (e) {
+                console.error("there is no last message");
+            }
         } else {
             this.sendMessage(command)
         }
@@ -68,7 +81,7 @@ class MsgStore {
     }
 
     sendMessage(txt, think = false) {
-        this.messages.push({ type: "me", data: txt, think: think })
+        this.messages.push(new Msg({ type: "me", data: txt, think: think }));
         this.socket.emit("newMessage", txt, think)
     }
 }

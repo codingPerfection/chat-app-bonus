@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Message.css';
 import MessageData from './MessageData/MessageData';
 import ReactCssTransition from 'react-addons-css-transition-group';
+import { observer } from 'mobx-react';
 
 class Message extends Component {
 
@@ -11,8 +12,9 @@ class Message extends Component {
     }
 
     addClass() {
+        let fade = this.props.fade ? " fade " : " ";
         let think = this.props.think ? " think " : " ";
-        return "Message " + this.props.type + think;
+        return "Message " + this.props.type + think + fade;
     }
 
 
@@ -39,4 +41,4 @@ class Message extends Component {
     }
 }
 
-export default Message;
+export default observer(Message);
