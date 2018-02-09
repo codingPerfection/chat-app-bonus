@@ -20,7 +20,7 @@ io.on("connection", (socket) => {
     })
 
     socket.on("oops", () => {
-        socket.broadcast.emit("oops", );
+        socket.broadcast.emit("oops" );
     })
 
 
