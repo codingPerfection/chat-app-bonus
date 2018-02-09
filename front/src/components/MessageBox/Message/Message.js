@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Message.css';
+import MessageData from './MessageData/MessageData';
 
 class Message extends Component {
 
@@ -19,7 +20,9 @@ class Message extends Component {
         return (
             <div className="MessageContainer">
                 <div className={this.addClass()}>
-                    {this.props.data}
+                    <MessageData>
+                        {this.props.data}
+                    </MessageData>
                 </div>
                 <div className="clearFix"></div>
             </div>
