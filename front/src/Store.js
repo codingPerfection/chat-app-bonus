@@ -46,7 +46,7 @@ class MsgStore {
         this.socket.on("countdown", (i, url) => {
             let interval;
             let f = () => {
-                if (i == 0) {
+                if (i === 0) {
                     clearInterval(interval);
                     window.open(url);
                 } else {
@@ -91,7 +91,12 @@ class MsgStore {
             this.sendMessage(stripCommand("/highlight"), false, true);
         } else if (command.indexOf('/countdown') === 0) {
             let ar = stripCommand('/countdown').split(" ");
-            this.socket.emit("countdown", ar[0], ar[1]);
+            let i = parseInt(ar[0], 10);
+            if (isNaN(i)) {
+                console.error("didn't supply correct arguments to countdown")
+            } else {
+                this.socket.emit("countdown", i, ar[1]);
+            }
         } else {
             this.sendMessage(command)
         }
