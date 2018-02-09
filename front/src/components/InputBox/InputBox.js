@@ -17,6 +17,8 @@ class InputBox extends Component {
             //call store and send command
             MsgStore.sendCommand(this.elem.value);
             this.elem.value = "";
+        }else{
+            MsgStore.sendTyping();
         }
     }
 

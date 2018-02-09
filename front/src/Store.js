@@ -8,6 +8,7 @@ class MsgStore {
         extendObservable(this, {
             messages: [],
             nickname: null,
+            typing: false,
         });
 
         this.socket = openSocket('http://localhost:80');
@@ -22,6 +23,16 @@ class MsgStore {
 
         this.socket.on("oops", () => {
             this.removeLastMessage("other");
+        })
+
+        let typingTimeout;
+        this.socket.on("typing", () => {
+            console.log("got typing");
+            clearTimeout(typingTimeout);
+            this.typing = true;
+            typingTimeout = setTimeout(() => {
+                this.typing = false;
+            }, 1000)
         })
     }
 
@@ -50,6 +61,10 @@ class MsgStore {
         } else {
             this.sendMessage(command)
         }
+    }
+
+    sendTyping() {
+        this.socket.emit("typing")
     }
 
     sendMessage(txt, think = false) {

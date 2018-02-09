@@ -23,6 +23,10 @@ io.on("connection", (socket) => {
         socket.broadcast.emit("oops" );
     })
 
+    socket.on("typing", () => {
+        socket.broadcast.emit("typing");
+    })
+
 
 })
 

@@ -1,4 +1,4 @@
-#added by Vjeran
+# added by Vjeran
 Front was was created using create-react-app and additionally added mobx and gzip webpack plugin to minimize file size
 
 

@@ -13,9 +13,14 @@ class App extends Component {
         <NotificationBox show={Store.nickname} >
           Talking to {Store.nickname}
         </NotificationBox>
-        <MessageBox />
-        <InputBox />
 
+        <MessageBox />
+
+        <NotificationBox show={Store.typing} >
+          User is typing...
+        </NotificationBox>
+
+        <InputBox />
       </div>
     );
   }
