@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Message.css';
 import MessageData from './MessageData/MessageData';
+import ReactCssTransition from 'react-addons-css-transition-group';
 
 class Message extends Component {
 
@@ -19,11 +20,19 @@ class Message extends Component {
     render() {
         return (
             <div className="MessageContainer">
-                <div className={this.addClass()}>
-                    <MessageData>
-                        {this.props.data}
-                    </MessageData>
-                </div>
+                <ReactCssTransition
+                    transitionName="slideIn"
+                    transitionAppearTimeout={1000}
+                    transitionAppear={true}
+                    transitionEnter={false}
+                    transitionLeave={false}
+                >
+                    <div className={this.addClass()}>
+                        <MessageData>
+                            {this.props.data}
+                        </MessageData>
+                    </div>
+                </ReactCssTransition>
                 <div className="clearFix"></div>
             </div>
         );

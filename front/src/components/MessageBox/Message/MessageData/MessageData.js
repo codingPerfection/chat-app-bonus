@@ -3,9 +3,6 @@ import './MessageData.css';
 
 class MessageData extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     parseData(data) {
         if (data === "(smile)") {

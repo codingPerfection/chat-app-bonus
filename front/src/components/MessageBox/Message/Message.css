@@ -21,3 +21,13 @@
 .Message.think{
     color:#666;
 }
+
+.Message.slideIn-appear{
+    transform: translateX(100%);
+    opacity: 0;
+}
+.Message.slideIn-appear.slideIn-appear-active{
+    transform: translateX(0%);
+    opacity: 1;
+    transition: opacity 1s linear, transform 1s linear;
+}
