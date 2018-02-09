@@ -15,7 +15,7 @@ class InputBox extends Component {
         if (e.keyCode === 13) {
             e.preventDefault();
             //call store and send command
-            MsgStore.sendMessage(this.elem.value);
+            MsgStore.sendCommand(this.elem.value);
             this.elem.value = "";
         }
     }

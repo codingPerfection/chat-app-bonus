@@ -10,6 +10,11 @@ io.on("connection", (socket) => {
         socket.broadcast.emit("newMessage", data);
     })
 
+    socket.on("nickname", (data) => {
+        console.log(data);
+        socket.broadcast.emit("nickname", data);
+    })
+
 })
 
 server.listen(80);
